@@ -11,7 +11,7 @@ def deployImage(){
     // def shellcmd = "bash scripts.sh ${APP_VERSION}"
     def svr = "techwithnc@192.168.20.234"
     sshagent(['ubt07']){
-        sh "echo hi"
+        sh "hostname"
         sh "scp ./CI_CD/scripts.sh ${svr}:/home/techwithnc "
         // sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
     }
