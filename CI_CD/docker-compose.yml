@@ -1,5 +1,5 @@
 services:
   web01:
-    image: techwithnc/betterhrapp:devops
+    image: techwithnc/betterhrapp:
     ports:
       - "8085:8080"
