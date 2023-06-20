@@ -13,6 +13,7 @@ def deployImage(){
     sshagent(['ubt07']){
         sh "sh echo hi"
         sh "scp ./CI_CD/scripts.sh ${svr}:/home/techwithnc "
+        sh "scp ./CI_CD/docker-compose.yml ${svr}:/home/techwithnc "
         sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
     }
 }
