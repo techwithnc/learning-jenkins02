@@ -2,7 +2,7 @@ def mygvscript
 pipeline {
     agent any
     environment {
-        APP_VERSION = "203.0"
+        APP_VERSION = "204.0"
     }
     stages{
         stage("Prepare"){
