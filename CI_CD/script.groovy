@@ -12,7 +12,7 @@ def deployImage(){
     def svr = "techwithnc@192.168.20.234"
     sshagent(['ubt07']){
         sh "echo hi"
-        // sh "scp ./CI_CD/scripts.sh ${svr}:/home/ubuntu "
+        sh "scp ./CI_CD/scripts.sh ${svr}:/home/techwithnc "
         // sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
     }
 }
