@@ -1,3 +1,4 @@
 #!/bin/bash
 echo "export app-v=$1"
-docker compose -p jp01 up -d
+echo $app-v
+# docker compose -p jp01 up -d
