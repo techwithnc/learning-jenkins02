@@ -8,14 +8,12 @@ def pushImage(){
                     }
 }
 def deployImage(){
-    // def shellcmd = "bash scripts.sh ${APP_VERSION}"
+    def shellcmd = "bash scripts.sh ${APP_VERSION}"
     def svr = "techwithnc@192.168.20.234"
     sshagent(['ubt07']){
         sh "scp ./CI_CD/scripts.sh ${svr}:/home/techwithnc "
-        sh "sh export app-v=${APP_VERSION}"
         sh "scp ./CI_CD/docker-compose.yml ${svr}:/home/techwithnc "
-        sh "sh docker compose -p pj01 up -d"
-        // sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
+        sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
     }
 }
 return this
