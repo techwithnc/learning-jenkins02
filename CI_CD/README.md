@@ -1,2 +1,2 @@
-# better-hr-tasks
-Devops tasks assignment for Better HR.
+# road to jenkins.
+Use this repo for learning jenkins.
