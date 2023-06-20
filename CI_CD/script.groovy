@@ -9,10 +9,11 @@ def pushImage(){
 }
 def deployImage(){
     def shellcmd = "bash scripts.sh ${APP_VERSION}"
-    def svr = "ubuntu@3.96.169.134"
-    sshagent(['awssvrssh']){
-        sh "scp ./CI_CD/scripts.sh ${svr}:/home/ubuntu "
-        sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
+    def svr = "techwithnc@192.168.20.234"
+    sshagent(['ubt07']){
+        sh "echo hi"
+        // sh "scp ./CI_CD/scripts.sh ${svr}:/home/ubuntu "
+        // sh "ssh -o StrictHostKeyChecking=no ${svr} ${shellcmd}"
     }
 }
 return this
