@@ -1,6 +1,6 @@
 version: "2"
 services:
   myapp01:
-    image: techwithnc/betterhrapp:201.0
+    image: techwithnc/betterhrapp:${appversion}
     ports:
       - 8085:8080
