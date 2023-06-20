@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "export app-v=$1"
-echo $app-v
+echo "export appversion=$1"
+echo $appversion
 # docker compose -p jp01 up -d
