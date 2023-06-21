@@ -12,6 +12,13 @@ pipeline {
                 '''
             }
         }
+        stage('Run Playbooks') {
+            setps {
+                dir('./ansible_playbooks') {
+                    sh 'ls -l'
+                }
+            }
+        }
     }
 }
  
