@@ -1,6 +1,6 @@
 all:
   hosts:
-    ubt07:
+    ubt03:
       ansible_user: techwithnc
-      ansible_host: 192.168.20.236
+      ansible_host: 192.168.70.54
       ansible_ssh_private_key_file: /tmp/sshkey01
