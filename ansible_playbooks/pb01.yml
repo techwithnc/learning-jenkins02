@@ -17,7 +17,7 @@
     - name : Create ansible user.
       ansible.builtin.user:
         name: ansible
-        shell: /bin/false
+        shell: /bin/bash
         groups: sudo
     - name: Set authorized key taken from file for ansible user.
       ansible.posix.authorized_key:
