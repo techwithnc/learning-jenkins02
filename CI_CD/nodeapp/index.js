@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello! this is version 204.0 from ansible branch');
+  res.send('Hello! this is version 206.0 from ansible branch');
 });
 
 app.listen(PORT, HOST, () => {
