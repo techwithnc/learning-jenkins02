@@ -6,13 +6,6 @@
     - name: APT update.
       ansible.builtin.apt:
         update_cache: true
-    - name: Validate the sudoers file before saving
-      ansible.builtin.lineinfile:
-        path: /etc/sudoers
-        state: present
-        regexp: '^%sudo'
-        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
-        validate: /usr/sbin/visudo -cf %s
   tasks:
     - name: remove old.
       ansible.builtin.apt:
@@ -61,23 +54,3 @@
           - docker-buildx-plugin
           - docker-compose-plugin
         state: present
-    # - name: Set authorized key taken from file for user02
-    #   ansible.posix.authorized_key:
-    #     user: ansible
-    #     state: present
-    #     key: "{{ lookup('file', '/home/techwithnc/.ssh/sshkey01.pub') }}"
-    # - name: Validate the sudoers file before saving
-    #   ansible.builtin.lineinfile:
-    #     path: /etc/sudoers
-    #     state: present
-    #     regexp: '^%sudo'
-    #     line: '%sudo ALL=(ALL) NOPASSWD: ALL'
-    #     validate: /usr/sbin/visudo -cf %s
-    # - name: Creates directory
-    #   ansible.builtin.file:
-    #     path: /home/techwithnc/{{item}}
-    #     state: directory
-    #     mode: '0755'
-    #     # owner: nyeinchan
-    #     # group: nyeinchan
-    #   with_items: ["dir01", "dir02", "dir03"]
