@@ -1,0 +1,31 @@
+---
+- name: CREATE DIRECTORY TO REMOTE SERVER
+  hosts: ubt07
+  become: yes
+  tasks:
+    # - name : Create user.
+    #   ansible.builtin.user:
+    #     name: ansible
+    #     shell: /bin/bash
+    #     groups: sudo
+    #     create_home: true
+    # - name: Set authorized key taken from file for user02
+    #   ansible.posix.authorized_key:
+    #     user: ansible
+    #     state: present
+    #     key: "{{ lookup('file', '/home/techwithnc/.ssh/sshkey01.pub') }}"
+    # - name: Validate the sudoers file before saving
+    #   ansible.builtin.lineinfile:
+    #     path: /etc/sudoers
+    #     state: present
+    #     regexp: '^%sudo'
+    #     line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+    #     validate: /usr/sbin/visudo -cf %s
+    - name: Creates directory
+      ansible.builtin.file:
+        path: /home/techwithnc/{{item}}
+        state: directory
+        mode: '0755'
+        # owner: nyeinchan
+        # group: nyeinchan
+      with_items: ["dir01", "dir02", "dir03"]
