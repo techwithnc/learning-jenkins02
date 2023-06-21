@@ -15,7 +15,6 @@ pipeline {
         stage('Run Playbooks') {
             steps {
                 dir('./ansible_playbooks') {
-                    sh 'ls -l /home/ansible/.ssh/'
                     sh 'ansible-playbook pb01.yml'
                 }
             }
