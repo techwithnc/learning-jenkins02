@@ -6,6 +6,13 @@
     - name: APT update.
       ansible.builtin.apt:
         update_cache: true
+    - name: Validate the sudoers file before saving
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%sudo'
+        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %s
   tasks:
     - name: remove old.
       ansible.builtin.apt:
