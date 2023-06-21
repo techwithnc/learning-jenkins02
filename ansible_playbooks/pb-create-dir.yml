@@ -1,0 +1,13 @@
+---
+- name: CREATE DIRECTORY TO REMOTE SERVER
+  hosts: ubt07
+  become: yes
+  tasks:
+    - name: Creates directory
+      ansible.builtin.file:
+        path: /home/techwithnc/{{item}}
+        state: directory
+        mode: '0755'
+        # owner: nyeinchan
+        # group: nyeinchan
+      with_items: ["dir01", "dir02", "dir03"]
