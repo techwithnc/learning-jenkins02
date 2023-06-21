@@ -1,36 +1,14 @@
 def mygvscript
 pipeline {
     agent any
-    environment {
-        APP_VERSION = "206.0"
-    }
     stages{
-        stage("Prepare"){
-            steps{
-                script{
-                    mygvscript = load "./CI_CD/script.groovy"
-                }
-            }
-        }
-        stage("Build_DOCKER_IMAGE"){
+        stage('Hello') {
             steps {
-                script {
-                    mygvscript.buildImage()
-                }
-            }
-        }
-        stage("Push_DOCKER_IMAGE") {
-            steps {
-                script {
-                    mygvscript.pushImage()
-                }
-            }
-        }
-        stage("Deploy_DOCKER_IMAGE") {
-            steps {
-                script {
-                    mygvscript.deployImage()
-                }
+                sh '''
+                ansible --version
+                ansible-playbook --version
+                ansible-galaxy --version
+                '''
             }
         }
     }
