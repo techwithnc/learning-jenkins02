@@ -1,10 +1,10 @@
 def buildImage(){
-    sh "sudo docker build . -f CI_CD/Dockerfile -t techwithnc/betterhrapp:$APP_VERSION"
+    sh "docker build . -f CI_CD/Dockerfile -t techwithnc/betterhrapp:$APP_VERSION"
 }
 def pushImage(){
     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                        sh "sudo echo $PASSWORD | docker login -u $USERNAME --password-stdin"
-                        sh "sudo docker push techwithnc/betterhrapp:$APP_VERSION"
+                        sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
+                        sh "docker push techwithnc/betterhrapp:$APP_VERSION"
                     }
 }
 def deployImage(){
