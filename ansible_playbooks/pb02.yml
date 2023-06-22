@@ -6,6 +6,7 @@
     - name: APT update.
       ansible.builtin.apt:
         update_cache: true
+        cache_valid_time: 3600
   tasks:
     - name: remove old.
       ansible.builtin.apt:
@@ -31,7 +32,7 @@
         state: directory
         mode: '0755'
     - name: Import Docker GPG key if  does not exist.
-      ansible.builtin.command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+      ansible.builtin.shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
       args:
         creates: /etc/apt/keyrings/docker.gpg
     - name: Set permissions for Docker GPG key
