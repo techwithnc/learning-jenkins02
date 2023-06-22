@@ -1,4 +1,4 @@
 #!/bin/bash
 export appversion=$1
-docker logout
-docker compose -p jp01 up -d
+sudo docker logout
+sudo docker compose -p jp01 up -d
