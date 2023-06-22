@@ -1,24 +1,46 @@
 def mygvscript
 pipeline {
     agent any
+    environment {
+        APP_VERSION = "802.0"
+    }
     stages{
-        stage('Hello') {
-            steps {
-                sh '''
-                ls -l
-                ansible --version
-                ansible-playbook --version
-                ansible-galaxy --version
-                '''
+        stage("Prepare"){
+            steps{
+                script{
+                    mygvscript = load "./CI_CD/script.groovy"
+                }
             }
         }
-        stage('Run Playbooks') {
+        stage('Install Docker with Ansible') {
             steps {
                 dir('./ansible_playbooks') {
                     sh 'ansible-playbook pb02.yml'
                 }
             }
         }
+        stage("Build_DOCKER_IMAGE"){
+            steps {
+                script {
+                    mygvscript.buildImage()
+                }
+            }
+        }
+        stage("Push_DOCKER_IMAGE") {
+            steps {
+                script {
+                    mygvscript.pushImage()
+                }
+            }
+        }
+        stage("Deploy_DOCKER_IMAGE") {
+            steps {
+                script {
+                    mygvscript.deployImage()
+                }
+            }
+        }
+    }
     }
 }
  
